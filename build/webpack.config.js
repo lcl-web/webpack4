@@ -39,7 +39,7 @@ pages.forEach((name, index) => {
         console.log("readDir:" + readDir);
         console.log("statInfo:" + statInfo.isFile());
         if(statInfo.isFile()){
-            if(!(readDir[i].indexOf('.ftl') !== -1)){
+            if(!(readDir[i].indexOf('.jhtml') !== -1)){
                 return false;
             }
         }
@@ -50,8 +50,8 @@ pages.forEach((name, index) => {
     // 输出页面模板
     pageHtml.push(new HtmlWebpackPlugin({
         entryName: name,
-        template: `${entryPath}/${name}.ftl`,
-        filename: `views/${name}/${name}.ftl`,
+        template: `${entryPath}/${name}.jhtml`,
+        filename: `views/${name}/${name}.jhtml`,
         inject: 'body',
         chunks: ['runtime', 'babel-polyfill', name]
     }));
@@ -85,27 +85,9 @@ module.exports = merge(baseConfig, {
             filename: isProduction ? '[name]/[name].[contenthash:20].min.css' : '[name]/[name].css',
             chunkFilename: isProduction ? '[name]/[name].[contenthash:20].min.css' : '[name]/[name].css'
         }),
-        new CopyWebpackPlugin([
-            {
-                from: ROOT_PATH + '/static/libs',
-                to: buildPath + '/libs',
-                toType: 'dir'
-            }, {
-                from: ROOT_PATH + '/static/common/assets',
-                to: buildPath + '/assets',
-                toType: 'dir'
-            }
-        ]),
         new EndWebpackPlugin(() => {
             //运行gulp构建
-            exec('npm run gulp', function (error, stdout, stderr) {
-                if (error) {
-                    console.error('error: ' + error);
-                    return;
-                }
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + typeof stderr);
-            });
+
         }, (err) => {
             console.log(err);
         })
