@@ -51,7 +51,7 @@ pages.forEach((name, index) => {
     pageHtml.push(new HtmlWebpackPlugin({
         entryName: name,
         template: `${entryPath}/${name}.jhtml`,
-        filename: `views/${name}/${name}.jhtml`,
+        filename: `views/${name}/${name}.html`,
         inject: 'body',
         chunks: ['runtime', 'babel-polyfill', name]
     }));
