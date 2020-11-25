@@ -1,0 +1,18 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.mvn
+
+### NetBeans ###
+/dist/
+
+### VS Code ###
+.vscode/
+
+### MAC
+.DS_Store
+
+##node
+node_modules/
