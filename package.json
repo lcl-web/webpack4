@@ -4,7 +4,8 @@
   "description": "webpack4构建工具",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "env NODE_ENV=development node_modules/.bin/webpack-cli --config ./build/webpack.config.js --progress --colors",
+    "build": "env NODE_ENV=production node_modules/.bin/webpack-cli --config ./build/webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
